@@ -1,7 +1,6 @@
 import shutil
 from pathlib import Path
 
-# path to your dataset
 ROOT = Path(r"C:\Users\user\Desktop\VIP\kaust data")
 
 CELLMOB = ROOT / "CellMob"
@@ -16,20 +15,17 @@ CITY_DIRS = {
     "kz": OUT / "kz",
 }
 
-# create output folders
 for d in CITY_DIRS.values():
     d.mkdir(parents=True, exist_ok=True)
 
 
 def copy_csvs(src_folder, dst_folder):
     for file in src_folder.glob("*.csv"):
-        # ignore Mac hidden files
+        
         if file.name.startswith("._"):
             continue
         shutil.copy2(file, dst_folder / file.name)
 
-
-# process CellMob folders
 for folder in CELLMOB.iterdir():
 
     if not folder.is_dir():
@@ -49,8 +45,6 @@ for folder in CELLMOB.iterdir():
     elif "_kz" in name:
         copy_csvs(folder, CITY_DIRS["kz"])
 
-
-# additional KAUST modes
 for folder in ADDITIONAL.iterdir():
 
     if folder.is_dir():
