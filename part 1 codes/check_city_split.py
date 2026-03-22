@@ -1,6 +1,9 @@
+#I first needed to convert the raw dataset into a federated structure, where each city becomes a separate client.
 import shutil
 from pathlib import Path
-
+#code that verifies the raw files
+#organizes data by city
+#creates the city-based split
 ROOT = Path(r"C:\Users\user\Desktop\VIP\kaust data")
 
 CELLMOB = ROOT / "CellMob"
